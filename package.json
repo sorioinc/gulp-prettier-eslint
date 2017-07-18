@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bhargavrpatel/gulp-prettier.git"
+    "url": "git+https://github.com/sorioinc/gulp-prettier-eslint.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
@@ -18,7 +18,7 @@
     "prettier",
     "gulp-prettier-eslint"
   ],
-  "author": "Bhargav R. Patel",
+  "author": "Bhargav R. Patel / Oscar Soriano",
   "license": "MIT",
   "dependencies": {
     "gulp-util": "^3.0.8",
