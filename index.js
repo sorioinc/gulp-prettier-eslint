@@ -1,47 +1,31 @@
 const through = require('through2'),
   gutil = require('gulp-util'),
-  prettier = require('prettier'),
+  prettierEslint = require('prettier-eslint'),
   merge = require('merge'),
   applySourceMap = require('vinyl-sourcemaps-apply');
 
 var PluginError = gutil.PluginError;
 
-module.exports = function(opt) {
+module.exports = function() {
   function transform(file, encoding, callback) {
     if (file.isNull())
       return callback(null, file);
     if (file.isStream())
       return callback(new PluginError(
-        'gulp-prettier',
+        'gulp-prettier-eslint',
         'Streaming not supported'
       ));
 
     let data;
-    let str = file.contents.toString('utf8');
-
-    options = merge(
-      {
-        // Fit code within this line limit
-        printWidth: 80,
-        // Number of spaces it should use per tab
-        tabWidth: 2,
-        // Use the flow parser instead of babylon
-        useFlowParser: true,
-        // If true, will use single instead of double quotes
-        singleQuote: false,
-        // Controls the printing of trailing commas wherever possible
-        trailingComma: false,
-        // Controls the printing of spaces inside array and objects
-        bracketSpacing: true
-      },
-      opt
-    );
+    const str = file.contents.toString('utf8');
 
     try {
-      data = prettier.format(str, options);
+      data = prettierEslint({
+          text: str,
+          filePath: file.path,
+      });
     } catch (err) {
-      console.log('there was a fucking error b!!');
-      return callback(new PluginError('gulp-prettier', err));
+      return callback(new PluginError('gulp-prettier-eslint', err));
     }
 
     if (data && data.v3SourceMap && file.sourceMap) {
