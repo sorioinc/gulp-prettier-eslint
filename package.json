@@ -22,9 +22,9 @@
   "license": "MIT",
   "dependencies": {
     "gulp-util": "^3.0.8",
-    "merge": "^1.2.0",
-    "prettier-eslint": "^6.4.2",
-    "through2": "^2.0.3",
+    "merge": "^2.2.1",
+    "prettier-eslint": "^8.8.2",
+    "through2": "^3.0.1",
     "vinyl-sourcemaps-apply": "^0.2.1"
   }
 }
