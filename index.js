@@ -1,10 +1,9 @@
-const through = require('through2'),
-  gutil = require('gulp-util'),
+const 
+  through = require('through2'),
+  PluginError = require('plugin-error'),
   prettierEslint = require('prettier-eslint'),
   merge = require('merge'),
   applySourceMap = require('vinyl-sourcemaps-apply');
-
-var PluginError = gutil.PluginError;
 
 module.exports = function() {
   function transform(file, encoding, callback) {
